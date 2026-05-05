@@ -1,0 +1,40 @@
+packet_id: B4-ARCH-001
+objective: Define the high-level architecture for scaling the existing query engine.
+scope_in:
+  - docs/backend-stage4-control-plane/01_brief_traceability.md
+  - docs/backend-stage4-control-plane/04_decisions_log.md
+  - docs/backend-stage4-control-plane/05_evidence_log.md
+  - docs/backend-stage4-control-plane/07_qa_checklist.md
+  - docs/backend-stage4-control-plane/08_interview_defense_bank.md
+  - drafts/insighta-labs-stage4-design.md
+  - config/runtime_status.json
+  - CURRENT_TASK
+scope_out:
+  - detailed diagram export
+  - backend implementation
+  - load testing
+concepts_to_explain:
+  - read-heavy architecture
+  - query engine boundary
+  - cache and database pressure reduction
+decisions_to_record:
+  - core component set
+  - caching role
+  - database scaling role
+implementation_steps:
+  - define components and interactions
+  - justify each component against a requirement
+  - reject unnecessary complexity
+  - update draft architecture section
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - architecture section updated
+interview_questions:
+  - Why does each component exist?
+  - Why not microservices?
+  - How does the architecture reduce database load?
+done_when:
+  - architecture gate closes with evidence
+  - draft has a justified architecture section
+  - next packet is B4-DATA-001

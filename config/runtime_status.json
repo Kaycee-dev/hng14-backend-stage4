@@ -1,0 +1,70 @@
+{
+  "stage": "Backend Stage 4A Insighta Labs+ System Design",
+  "current_packet": "B4-SUBMISSION-001",
+  "experiments_allowed": false,
+  "deadline": "2026-05-05T23:59:00+01:00",
+  "timezone": "Africa/Lagos",
+  "submission_ready": true,
+  "gates": {
+    "governance": {
+      "status": "closed",
+      "evidence": [
+        "E-001"
+      ]
+    },
+    "requirements": {
+      "status": "closed",
+      "evidence": [
+        "E-002"
+      ]
+    },
+    "architecture": {
+      "status": "closed",
+      "evidence": [
+        "E-003"
+      ]
+    },
+    "data_flow": {
+      "status": "closed",
+      "evidence": [
+        "E-004"
+      ]
+    },
+    "decisions": {
+      "status": "closed",
+      "evidence": [
+        "E-005"
+      ]
+    },
+    "diagram": {
+      "status": "closed",
+      "evidence": [
+        "E-006"
+      ]
+    },
+    "submission": {
+      "status": "closed",
+      "evidence": [
+        "E-007",
+        "E-008"
+      ]
+    }
+  },
+  "verification": {
+    "control_plane_check": "passed",
+    "last_run": "2026-05-05",
+    "summary": "Stage 4A submission-ready after simplification. All seven gates remain closed. Evidence E-008 records the post-review correction from a dense infrastructure presentation to a compact final draft and a simplified architecture diagram. The core design is the existing Stage 3 API plus bounded query validation, normalized cache keys, short-lived query-result caching, PostgreSQL indexing, batch ingestion, and observability. Read replicas, materialized aggregates, and external poolers are conditional scale levers only."
+  },
+  "submission": {
+    "draft": "drafts/insighta-labs-stage4-design.md",
+    "compact_draft": "drafts/insighta-labs-stage4-design-compact.md",
+    "diagram_source": "diagrams/source/architecture.mmd",
+    "diagram_export_reference": "diagrams/exported/architecture.md",
+    "diagram_export_target": "diagrams/exported/architecture.png",
+    "final_destination": "Google Docs",
+    "sharing_requirement": "Anyone with the link can view",
+    "page_limit": "2-7 pages",
+    "operator_checklist": "Use drafts/insighta-labs-stage4-design.md as the Google Docs body, embed diagrams/exported/architecture.png under Section 6, add a public link to diagrams/source/architecture.mmd, confirm 2-7 pages, then set sharing to Anyone with the link can view."
+  },
+  "next_exact_step": "Operator: replace the Google Doc body with drafts/insighta-labs-stage4-design.md, embed diagrams/exported/architecture.png under Section 6, add a public link to diagrams/source/architecture.mmd directly below the image, confirm the document is 2-7 pages at default styling, set sharing to 'Anyone with the link can view', and submit before 2026-05-05 23:59 WAT. After submission, proceed to Stage 4B in the Stage 3 repo."
+}

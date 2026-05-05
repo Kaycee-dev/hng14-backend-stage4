@@ -1,0 +1,44 @@
+packet_id: B4-GOV-001
+objective: Create the governance scaffold and prove design-doc-only guardrails are active.
+scope_in:
+  - AGENTS.md
+  - CURRENT_TASK
+  - README.md
+  - config/runtime_status.json
+  - docs/backend-stage4-control-plane/**
+  - scripts/control_plane_check.py
+  - drafts/**
+  - diagrams/**
+  - journal/**
+scope_out:
+  - backend implementation files
+  - benchmark suites
+  - load-test scripts
+  - Docker or deployment files
+concepts_to_explain:
+  - control-plane truth surfaces
+  - evidence-backed gate closure
+  - design-document guardrails
+decisions_to_record:
+  - governance before drafting
+  - design-doc-only scope
+  - experiments disabled by default
+implementation_steps:
+  - create governance docs and task packets
+  - add control-plane checker
+  - create draft and diagram source paths
+  - run checker
+  - record E-001 and close governance gate
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - E-001 governance scaffold checker pass
+interview_questions:
+  - Why build governance before the design draft?
+  - Why disable experiments?
+  - What does the checker prevent?
+done_when:
+  - control-plane checker passes
+  - CURRENT_TASK is B4-REQ-001
+  - governance gate is closed with E-001
+  - experiments_allowed remains false

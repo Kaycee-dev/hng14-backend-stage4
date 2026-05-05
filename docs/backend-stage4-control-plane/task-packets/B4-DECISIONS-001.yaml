@@ -1,0 +1,42 @@
+packet_id: B4-DECISIONS-001
+objective: Record key design decisions, alternatives, trade-offs, and requirement mapping.
+scope_in:
+  - docs/backend-stage4-control-plane/01_brief_traceability.md
+  - docs/backend-stage4-control-plane/04_decisions_log.md
+  - docs/backend-stage4-control-plane/05_evidence_log.md
+  - docs/backend-stage4-control-plane/07_qa_checklist.md
+  - docs/backend-stage4-control-plane/08_interview_defense_bank.md
+  - drafts/insighta-labs-stage4-design.md
+  - config/runtime_status.json
+  - CURRENT_TASK
+scope_out:
+  - diagram export
+  - final Google Docs formatting
+  - backend implementation
+concepts_to_explain:
+  - decision-to-requirement mapping
+  - trade-off analysis
+  - degradation modes
+decisions_to_record:
+  - indexing strategy
+  - caching strategy
+  - query constraints
+  - observability and reliability strategy
+  - future-only boundaries
+implementation_steps:
+  - record major architecture decisions
+  - add alternatives and rejected options
+  - map decisions to requirements
+  - update draft decisions and limitations sections
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - decisions and limitations sections updated
+interview_questions:
+  - What trade-off does caching introduce?
+  - Why not real-time streaming in the core design?
+  - When would read replicas be justified?
+done_when:
+  - decisions gate closes with evidence
+  - draft has decisions and limitations
+  - next packet is B4-DIAGRAM-001

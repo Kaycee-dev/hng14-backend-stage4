@@ -1,0 +1,36 @@
+%% Insighta Labs+ Stage 4A - Practical Scaling Architecture
+%% Source for Google Docs embed. Render with mermaid.live or mmdc.
+%% The diagram intentionally separates first-rollout changes from conditional levers.
+
+flowchart TD
+    Clients["Stage 3 Clients<br/>CLI + Next.js Web<br/>(preserved)"]
+
+    API["Existing Backend API<br/>Node.js / Express<br/>Auth + RBAC preserved"]
+
+    Query["Query Engine Improvements<br/>rule-based mapper<br/>query validator + bounds<br/>normalized cache key"]
+
+    Cache[("Query Result Cache<br/>short TTL<br/>batch-version invalidation")]
+
+    DB[("PostgreSQL<br/>relational source of truth<br/>targeted B-tree indexes")]
+
+    Ingest["Periodic Batch Ingestion<br/>validate rows<br/>batch writes<br/>invalidate cache after commit"]
+
+    Obs["Observability<br/>P50/P95, slow queries<br/>cache hit rate, DB load<br/>ingestion freshness"]
+
+    Levers["Conditional scale levers<br/>only if metrics require:<br/>read replica<br/>materialized aggregates<br/>external connection pooler"]
+
+    Clients --> API
+    API --> Query
+    Query --> Cache
+    Cache -- "miss" --> DB
+    Query -- "uncached or CSV" --> DB
+    Ingest --> DB
+    Ingest -- "after commit" --> Cache
+
+    API --> Obs
+    Cache --> Obs
+    DB --> Obs
+    Ingest --> Obs
+
+    Obs -. "measured trigger" .-> Levers
+    Levers -. "extend read path" .-> DB

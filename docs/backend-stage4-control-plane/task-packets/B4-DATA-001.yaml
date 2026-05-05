@@ -1,0 +1,40 @@
+packet_id: B4-DATA-001
+objective: Define ingestion flow, query flow, result flow, and consistency boundaries.
+scope_in:
+  - docs/backend-stage4-control-plane/01_brief_traceability.md
+  - docs/backend-stage4-control-plane/04_decisions_log.md
+  - docs/backend-stage4-control-plane/05_evidence_log.md
+  - docs/backend-stage4-control-plane/07_qa_checklist.md
+  - docs/backend-stage4-control-plane/08_interview_defense_bank.md
+  - drafts/insighta-labs-stage4-design.md
+  - config/runtime_status.json
+  - CURRENT_TASK
+scope_out:
+  - diagram export
+  - benchmark proof
+  - backend implementation
+concepts_to_explain:
+  - batch ingestion
+  - cache hit and miss paths
+  - consistency for read-heavy systems
+decisions_to_record:
+  - ingestion timing and freshness boundary
+  - query validation and timeout boundary
+implementation_steps:
+  - document batch ingestion path
+  - document query request path
+  - document cache and database fallback path
+  - document result return path
+  - update draft data-flow section
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - data-flow section updated
+interview_questions:
+  - What happens on cache miss?
+  - How fresh are query results after batch ingestion?
+  - What happens when a query is too expensive?
+done_when:
+  - data-flow gate closes with evidence
+  - draft has ingestion and query flows
+  - next packet is B4-DECISIONS-001

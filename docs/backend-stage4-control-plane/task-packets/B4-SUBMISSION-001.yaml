@@ -1,0 +1,42 @@
+packet_id: B4-SUBMISSION-001
+objective: Assemble the Google Docs-ready draft, reconcile QA, and prepare final submission.
+scope_in:
+  - drafts/insighta-labs-stage4-design.md
+  - diagrams/**
+  - docs/backend-stage4-control-plane/**
+  - README.md
+  - config/runtime_status.json
+  - CURRENT_TASK
+scope_out:
+  - new architecture decisions without returning to the relevant packet
+  - backend implementation
+  - benchmark or load-test claims
+concepts_to_explain:
+  - submission readiness
+  - evidence-backed final claims
+  - interview defense preparation
+decisions_to_record:
+  - final title
+  - final diagram source link
+  - final Google Docs sharing status
+implementation_steps:
+  - reconcile draft against required sections
+  - check 2-7 page target
+  - embed diagram in Google Docs
+  - include original diagram link
+  - set sharing to anyone with link can view
+  - record final evidence
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - final draft path
+  - diagram source and export paths
+  - Google Docs sharing status
+interview_questions:
+  - Which evidence proves each required section exists?
+  - What would you improve after submission?
+  - Which design choices are intentionally simple?
+done_when:
+  - submission gate closes with evidence
+  - QA checklist is complete
+  - Google Docs submission is ready

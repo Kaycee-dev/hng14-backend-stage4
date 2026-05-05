@@ -1,0 +1,40 @@
+packet_id: B4-DIAGRAM-001
+objective: Create the architecture diagram source and export-ready diagram asset.
+scope_in:
+  - diagrams/source/**
+  - diagrams/exported/**
+  - docs/backend-stage4-control-plane/05_evidence_log.md
+  - docs/backend-stage4-control-plane/07_qa_checklist.md
+  - docs/backend-stage4-control-plane/08_interview_defense_bank.md
+  - docs/backend-stage4-control-plane/09_submission_and_diagram_plan.md
+  - drafts/insighta-labs-stage4-design.md
+  - config/runtime_status.json
+  - CURRENT_TASK
+scope_out:
+  - changing core architecture decisions without updating B4-DECISIONS-001 artifacts
+  - backend implementation
+concepts_to_explain:
+  - architecture visualization
+  - source diagram versus embedded export
+  - diagram claim consistency
+decisions_to_record:
+  - final diagram format
+  - final component labels
+implementation_steps:
+  - create source diagram
+  - export embeddable diagram asset
+  - link diagram source in draft
+  - update QA and evidence
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - diagram source path
+  - exported diagram path
+interview_questions:
+  - How does the diagram match the design?
+  - Why are these components included?
+  - Which components were intentionally left out?
+done_when:
+  - diagram gate closes with evidence
+  - source and exported diagram paths are recorded
+  - next packet is B4-SUBMISSION-001

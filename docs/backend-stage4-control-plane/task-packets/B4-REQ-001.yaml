@@ -1,0 +1,41 @@
+packet_id: B4-REQ-001
+objective: Extract functional and non-functional requirements from the official brief.
+scope_in:
+  - task_details.md
+  - mentor_feedback.md
+  - docs/backend-stage4-control-plane/01_brief_traceability.md
+  - docs/backend-stage4-control-plane/05_evidence_log.md
+  - docs/backend-stage4-control-plane/07_qa_checklist.md
+  - docs/backend-stage4-control-plane/08_interview_defense_bank.md
+  - drafts/insighta-labs-stage4-design.md
+  - config/runtime_status.json
+  - CURRENT_TASK
+scope_out:
+  - architecture component selection
+  - diagram creation
+  - backend implementation
+concepts_to_explain:
+  - functional versus non-functional requirements
+  - structured query model
+  - scale assumptions
+decisions_to_record:
+  - query model boundary
+  - non-functional target interpretation
+implementation_steps:
+  - extract functional requirements
+  - extract non-functional requirements
+  - mark Stage 3 preservation assumptions
+  - update draft requirements section
+  - record evidence and advance to B4-ARCH-001
+verification_commands:
+  - python scripts/control_plane_check.py
+evidence_to_capture:
+  - requirements section updated
+interview_questions:
+  - Why is this not a true natural-language system?
+  - Which requirements are functional?
+  - Which requirements are non-functional?
+done_when:
+  - requirements gate closes with evidence
+  - draft has functional and non-functional requirements
+  - next packet is B4-ARCH-001

@@ -1,30 +1,32 @@
-# Backend Stage 4A Agent Notes
+# Backend Stage 4 Agent Notes
 
-## Read Order
+## Repository Role
 
-1. `task_details.md`
-2. `mentor_feedback.md`
-3. `docs/backend-stage4-control-plane/README.md`
-4. `config/runtime_status.json`
-5. `CURRENT_TASK`
-6. The task packet named by `CURRENT_TASK`
+This is the Stage 4 submission repository for Insighta Labs+. It contains:
+- The Stage 3 backend implementation (baseline)
+- Stage 4A system design artifacts (`docs/backend-stage4-control-plane/`, `drafts/`, `diagrams/`)
+- Stage 4B implementation code (`src/`, `migrations/004_stage4b_optimization.sql`, tests)
+- Repo-ready `cli/` and `web/` packages
+
+## Read Order (for a new agent)
+
+1. `task_details.md` — Stage 4A spec
+2. `task_details_4B.md` — Stage 4B spec
+3. `SOLUTION.md` — Stage 4B implementation summary
+4. `docs/backend-stage4-control-plane/04_decisions_log.md` — design decisions
+5. `src/app.js` — Express app entry
+6. `src/lib/queryCache.js` — normalization and cache
+7. `src/services/profileImport.js` — CSV ingestion
+8. `src/repo/profiles.js` — database layer
+9. `migrations/` — schema history
 
 ## Operating Rules
 
-- This repo is in design-document governance mode for the Insighta Labs+ Stage 4 scaling task.
-- Do not create backend implementation, benchmark, load-test, Docker, service, or prototype files while `config/runtime_status.json` has `experiments_allowed` set to `false`.
-- The final deliverable is a Google Docs system design document, not runnable application code.
-- Stage 3 stays intact conceptually: auth, RBAC, CLI, and web portal must not be redesigned away or treated as broken.
-- Every design claim must map back to the official brief or to a recorded design decision.
-- Do not claim true natural-language or LLM query support. The brief states structured filters, aggregations, and simple rule-based keyword mapping only.
-- Avoid unjustified microservices, queues, multi-region architecture, streaming systems, and calculations that do not support a concrete decision.
-- Every non-trivial slice must update the active task packet, evidence log, decisions log when a lasting choice changes, QA checklist, defense bank, and same-day journal.
-- Do not close a gate unless the gate cites an evidence id present in `docs/backend-stage4-control-plane/05_evidence_log.md`.
-- Any user-facing claim in `README.md`, the design draft, diagram notes, or submission notes must match `config/runtime_status.json`.
-
-## Design-With-Me Protocol
-
-- Each slice starts with a short teach-back note: concept, design decision, expected deliverable, and likely interview question.
-- Each slice ends with proof: updated document paths, evidence id, and a plain-English explanation of what changed.
-- Failures and rejected ideas must be recorded. Debugging and trade-off evidence are part of the defense trail.
-- The operator must be able to explain the slice without relying on AI before the next slice closes.
+- This repo is the Stage 4 implementation AND design repo. It is not governance-only.
+- Preserve Stage 3 behavior: auth, RBAC, existing response shapes, API versioning, pagination, CSV export.
+- The only new API surface is `POST /api/profiles/import` (admin-only, multipart).
+- Do not add Redis, external queues, LLM/AI query behavior, or horizontal scaling infra.
+- Query model is structured filters + deterministic rule-based keyword mapping only (no LLM).
+- Do not commit `.env` files or secrets.
+- Run `npm test` and `npm run lint` before committing implementation changes.
+- Keep `SOLUTION.md` and evidence logs current.

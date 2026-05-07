@@ -1,0 +1,21 @@
+node_modules/
+.env
+.env.local
+*.log
+coverage/
+
+# Next.js build output
+.next/
+web/.next/
+*.tgz
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Word temp files
+~$*
+
+# Duplicate / local-only docs
+docs/backend-stage4-control-plane/interview_prep.txt
+docs/backend-stage4-control-plane/~$terview_prep.docx

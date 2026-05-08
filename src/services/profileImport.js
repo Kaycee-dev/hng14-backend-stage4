@@ -193,7 +193,7 @@ function importProfilesFromMultipart(req, options = {}) {
     try {
       busboy = Busboy({ headers: req.headers, limits: { files: 1 } });
     } catch (err) {
-      reject(err);
+      reject(new HttpError(400, 'Invalid multipart request'));
       return;
     }
 

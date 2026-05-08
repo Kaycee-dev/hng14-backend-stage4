@@ -12,3 +12,14 @@
 | E-4B-008 | 2026-05-05 | B4B-SOLUTION-001 | Created `SOLUTION.md`. | Solution document covers query optimization, indexes, fallback behavior, cache normalization/invalidation, CSV ingestion, edge cases, trade-offs, verification results, and exact DB-backed measurement commands. |
 | E-4B-009 | 2026-05-05 | B4B-TEST-001 | `npm run migrate` with provided Railway `DATABASE_URL`. | Passed. Migrations `001_init.sql` through `004_stage4b_optimization.sql` applied successfully. |
 | E-4B-010 | 2026-05-05 | B4B-SOLUTION-001 | Read-only Railway query timing with 2,030 `profiles` rows, five runs each. | Old two-query count/page flow average: 712.066 ms. New `COUNT(*) OVER()` query average: 369.014 ms. |
+| EV-4B-TEST-001 | 2026-05-08 | QA | `npm install` – 109 packages, 0 vulnerabilities | PASS |
+| EV-4B-TEST-002 | 2026-05-08 | QA | `npm run migrate` – all four migrations applied (001–004) | PASS |
+| EV-4B-TEST-003 | 2026-05-08 | QA | `npm run lint` (node-check.js) | PASS (no output = clean) |
+| EV-4B-TEST-004 | 2026-05-08 | QA | `npm test` – 69/69 tests pass, 0 fail, 0 skip | PASS |
+| EV-4B-TEST-005 | 2026-05-08 | QA | Live server smoke: root 200, missing API-version 400, missing auth 401, invalid auth 401 | PASS |
+| EV-4B-TEST-006 | 2026-05-08 | QA | Auth: GET /auth/admin → admin token, GET /auth/analyst → analyst token; admin read 200, analyst read 200, analyst import 403 | PASS |
+| EV-4B-TEST-007 | 2026-05-08 | QA | Stage 3 shape: pagination (page, limit, total, total_pages, links, data array with all profile fields), NLS search, CSV export headers | PASS |
+| EV-4B-TEST-008 | 2026-05-08 | QA | Stage 4B indexes: migration 004 contains (country_id,gender,age), (gender,age), (country_id,age); `queryProfiles` uses COUNT(*) OVER() + fallback count | PASS |
+| EV-4B-TEST-009 | 2026-05-08 | QA | Cache timing: cold 484 ms, warm (cached) 339 ms, canonical-equiv 449 ms on Railway DB; canonical params produce same cache key | PASS |
+| EV-4B-TEST-010 | 2026-05-08 | QA | Import: admin valid CSV → 5 inserted; mixed CSV → bad rows skipped (missing_fields, invalid_age, duplicate_name); duplicate re-upload → all 5 skipped duplicate_name; analyst → 403 | PASS |
+| EV-4B-TEST-011 | 2026-05-08 | QA | Postman pack generated: `postman/Stage4B-Demo.postman_collection.json`, `postman/Stage4B-Local.postman_environment.json`, `postman/README.md`, 3 sample CSVs | DONE |

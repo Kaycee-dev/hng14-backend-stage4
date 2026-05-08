@@ -1,0 +1,6 @@
+name,gender,age,country_id,gender_probability,country_probability
+Amara Diallo,female,28,SN,0.95,0.87
+Kwame Asante,male,34,GH,0.92,0.78
+Fatima Hassan,female,22,NG,0.88,0.91
+Kofi Mensah,male,45,GH,0.96,0.82
+Aisha Mwangi,female,31,KE,0.91,0.74
